@@ -1,0 +1,73 @@
+spring:
+
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+  aop:
+    auto:  true
+    proxy-target-class:  true
+
+  jackson:
+    default-property-inclusion: non_null
+    date-format: yyyy-MM-dd HH:mm:ss
+
+  mvc:
+    date-format: yyyy-MM-dd HH:mm:ss
+    throw-exception-if-no-handler-found: true
+
+  resources:
+    add-mappings: false
+
+  servlet:
+    load-on-startup: 1
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+    maxIdle: 20
+    minIdle: 20
+    maxTotal: 200
+    maxWait: 30000
+
+  session:
+    store-type: redis
+log:
+  level: info
+
+server:
+  port: 9003
+
+http:
+  connectionRequestTimeout: 3000
+  connectionTimeout: 2000
+  socTimeout: 5000
+  idleConnTimeout: 3000
+  checkWaitTime: 3000
+  maxConnPerHost: 200
+  maxTotalConn: 200
+
+---
+spring:
+  profiles:
+    active: dev
+
+---
+spring:
+  profiles: publish
+
+log:
+  level: WARN
+
+logging:
+  level:
+    root: WARN
+    com.roly.wechat: WARN
+
+debug: false
+
+
+
+
+
